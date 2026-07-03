@@ -57,15 +57,15 @@ Montera was built to solve critical bookkeeping bottleneck issues for three core
 4.  **Review Anomaly Alerts:** Inspect the AI output. The RAG engine flags line item anomalies (like a high setup charge relative to a recurring retainer).
 
 <p align="center">
-  <a href="[Insert Business Video Drive Link]"><img src="./Buisness%20workspace.png" width="90%" alt="Empty Business Dashboard" /></a>
+  <a href="https://drive.google.com/drive/folders/1WheArwTlyaJFBIDA1vbYmpFrecy7jPuT?usp=sharing"><img src="./Buisness%20workspace.png" width="90%" alt="Empty Business Dashboard" /></a>
 </p>
 
 5.  **Log Ledger:** Verify the extracted total, select an IRS tax classification from the Schedule C dropdown, and click **Save as Transaction**.
 6.  **Runway Graphing:** Navigate to the **Dashboard** to view updated net balance charts, general ledgers, and runway burn trends. Click **Enable Demo Sandbox Data** to preview the dashboard charts instantly.
 
 <p align="center">
-  <a href="[Insert Business Video Drive Link]"><img src="./populated_dashboard.png" width="45%" alt="Populated Business Dashboard" /></a>
-  <a href="[Insert Business Video Drive Link]"><img src="./insights_charts.png" width="45%" alt="Insights Charts" /></a>
+  <a href="https://drive.google.com/drive/folders/1WheArwTlyaJFBIDA1vbYmpFrecy7jPuT?usp=sharing"><img src="./populated_dashboard.png" width="45%" alt="Populated Business Dashboard" /></a>
+  <a href="https://drive.google.com/file/d/1eQrTQhejoPNNLxq49JcrZkM5iXNZaTmQ/view?usp=sharing"><img src="./insights_charts.png" width="45%" alt="Insights Charts" /></a>
 </p>
 
 ---
@@ -82,8 +82,8 @@ Montera was built to solve critical bookkeeping bottleneck issues for three core
 2.  **Add Ledger Logs:** Log manual transactions in the **Transactions** panel to track your personal cash flow.
 
 <p align="center">
-  <a href="[Insert Personal Video Drive Link]"><img src="./personal_goals.png" width="45%" alt="Savings Goals" /></a>
-  <a href="[Insert Personal Video Drive Link]"><img src="./personal_reports.png" width="45%" alt="Personal Reports" /></a>
+  <a href="https://drive.google.com/file/d/1eQrTQhejoPNNLxq49JcrZkM5iXNZaTmQ/view?usp=sharing"><img src="./personal_goals.png" width="45%" alt="Savings Goals" /></a>
+  <a href="https://drive.google.com/drive/folders/1WheArwTlyaJFBIDA1vbYmpFrecy7jPuT?usp=sharing"><img src="./personal_reports.png" width="45%" alt="Personal Reports" /></a>
 </p>
 
 3.  **Allocate Budgets:** Go to **Budgets** to specify monthly limits and monitor progress metrics.
@@ -91,7 +91,7 @@ Montera was built to solve critical bookkeeping bottleneck issues for three core
 5.  **Insights:** Go to **Insights** to view spending trend graphs and category breakdowns.
 
 <p align="center">
-  <a href="[Insert Personal Video Drive Link]"><img src="./personal_ledger.png" width="45%" alt="Personal Transactions Ledger" /></a>
+  <a href="https://drive.google.com/file/d/1eQrTQhejoPNNLxq49JcrZkM5iXNZaTmQ/view?usp=sharing"><img src="./personal_ledger.png" width="45%" alt="Personal Transactions Ledger" /></a>
 </p>
 
 ---
