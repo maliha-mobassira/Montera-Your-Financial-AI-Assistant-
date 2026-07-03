@@ -44,10 +44,10 @@ Montera was built to solve critical bookkeeping bottleneck issues for three core
 ## 👥 How to Use Montera
 
 ### 🏢 1. The Business AI Auditing Workspace
-> 📺 **[Watch the Business AI Auditing & RAG Ingestion Demo Video (Drive Link)]([Insert Business Video Drive Link])** *(Click any business screenshot below to play video)*
+> 📺 **[Watch the Business AI Auditing & RAG Ingestion Demo Video](https://drive.google.com/drive/folders/1WheArwTlyaJFBIDA1vbYmpFrecy7jPuT?usp=sharing)** *(Click any business screenshot below to play video)*
 
 <p align="center">
-  <a href="https://drive.google.com/file/d/1eQrTQhejoPNNLxq49JcrZkM5iXNZaTmQ/view?usp=sharing"><img src="./Log%20in%20page%20.png" width="45%" alt="Login Portal" /></a>
+  <a href="https://drive.google.com/drive/folders/1WheArwTlyaJFBIDA1vbYmpFrecy7jPuT?usp=sharing"><img src="./Log%20in%20page%20.png" width="45%" alt="Login Portal" /></a>
   <a href="https://drive.google.com/drive/folders/1WheArwTlyaJFBIDA1vbYmpFrecy7jPuT?usp=sharing"><img src="./workspace%20.png" width="45%" alt="Workspace Selector" /></a>
 </p>
 
@@ -65,25 +65,25 @@ Montera was built to solve critical bookkeeping bottleneck issues for three core
 
 <p align="center">
   <a href="https://drive.google.com/drive/folders/1WheArwTlyaJFBIDA1vbYmpFrecy7jPuT?usp=sharing"><img src="./populated_dashboard.png" width="45%" alt="Populated Business Dashboard" /></a>
-  <a href="https://drive.google.com/file/d/1eQrTQhejoPNNLxq49JcrZkM5iXNZaTmQ/view?usp=sharing"><img src="./insights_charts.png" width="45%" alt="Insights Charts" /></a>
+  <a href="https://drive.google.com/drive/folders/1WheArwTlyaJFBIDA1vbYmpFrecy7jPuT?usp=sharing"><img src="./insights_charts.png" width="45%" alt="Insights Charts" /></a>
 </p>
 
 ---
 
 ### 💳 2. The Personal Tracker Workspace
-> 📺 **[Watch the Personal Ledger & Goals Management Demo Video (Drive Link)]([Insert Personal Video Drive Link])** *(Click any personal screenshot below to play video)*
+> 📺 **[Watch the Personal Ledger & Goals Management Demo Video](https://drive.google.com/drive/folders/1kT_tZYa3vFIZmfVxR3oTbLoMRTKTDEzf?usp=sharing)** *(Click any personal screenshot below to play video)*
 
 <p align="center">
-  <a href="https://drive.google.com/file/d/1eQrTQhejoPNNLxq49JcrZkM5iXNZaTmQ/view?usp=sharing"><img src="./personal_categories.png" width="45%" alt="Personal Categories" /></a>
-  <a href="https://drive.google.com/drive/folders/1WheArwTlyaJFBIDA1vbYmpFrecy7jPuT?usp=sharing"><img src="./personal_budgets.png" width="45%" alt="Personal Budgets" /></a>
+  <a href="https://drive.google.com/drive/folders/1kT_tZYa3vFIZmfVxR3oTbLoMRTKTDEzf?usp=sharing"><img src="./personal_categories.png" width="45%" alt="Personal Categories" /></a>
+  <a href="https://drive.google.com/drive/folders/1kT_tZYa3vFIZmfVxR3oTbLoMRTKTDEzf?usp=sharing"><img src="./personal_budgets.png" width="45%" alt="Personal Budgets" /></a>
 </p>
 
 1.  **Configure Categories:** Go to **Categories** and add items with custom emojis (e.g., 🏠 `Rent & Housing`, 📱 `Mobile & Internet`).
 2.  **Add Ledger Logs:** Log manual transactions in the **Transactions** panel to track your personal cash flow.
 
 <p align="center">
-  <a href="https://drive.google.com/file/d/1eQrTQhejoPNNLxq49JcrZkM5iXNZaTmQ/view?usp=sharing"><img src="./personal_goals.png" width="45%" alt="Savings Goals" /></a>
-  <a href="https://drive.google.com/drive/folders/1WheArwTlyaJFBIDA1vbYmpFrecy7jPuT?usp=sharing"><img src="./personal_reports.png" width="45%" alt="Personal Reports" /></a>
+  <a href="https://drive.google.com/drive/folders/1kT_tZYa3vFIZmfVxR3oTbLoMRTKTDEzf?usp=sharing"><img src="./personal_goals.png" width="45%" alt="Savings Goals" /></a>
+  <a href="https://drive.google.com/drive/folders/1kT_tZYa3vFIZmfVxR3oTbLoMRTKTDEzf?usp=sharing"><img src="./personal_reports.png" width="45%" alt="Personal Reports" /></a>
 </p>
 
 3.  **Allocate Budgets:** Go to **Budgets** to specify monthly limits and monitor progress metrics.
@@ -91,7 +91,7 @@ Montera was built to solve critical bookkeeping bottleneck issues for three core
 5.  **Insights:** Go to **Insights** to view spending trend graphs and category breakdowns.
 
 <p align="center">
-  <a href="https://drive.google.com/file/d/1eQrTQhejoPNNLxq49JcrZkM5iXNZaTmQ/view?usp=sharing"><img src="./personal_ledger.png" width="45%" alt="Personal Transactions Ledger" /></a>
+  <a href="https://drive.google.com/drive/folders/1kT_tZYa3vFIZmfVxR3oTbLoMRTKTDEzf?usp=sharing"><img src="./personal_ledger.png" width="45%" alt="Personal Transactions Ledger" /></a>
 </p>
 
 ---

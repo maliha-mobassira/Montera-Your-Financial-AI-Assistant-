@@ -862,7 +862,7 @@ function AppShell() {
               href={
                 activePersona === 'business'
                   ? 'https://drive.google.com/drive/folders/1WheArwTlyaJFBIDA1vbYmpFrecy7jPuT?usp=sharing'
-                  : 'https://drive.google.com/file/d/1eQrTQhejoPNNLxq49JcrZkM5iXNZaTmQ/view?usp=sharing'
+                  : 'https://drive.google.com/drive/folders/1kT_tZYa3vFIZmfVxR3oTbLoMRTKTDEzf?usp=sharing'
               }
               icon={<PlayCircle className="navIcon" style={{ color: 'var(--accent)' }} />}
               label={`${activePersona === 'business' ? 'Business' : 'Personal'} Video`}
