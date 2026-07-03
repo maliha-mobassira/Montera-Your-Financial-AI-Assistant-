@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: finance-ai-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: LANGCHAIN_API_KEY
+        sync: false
+      - key: LANGCHAIN_TRACING_V2
+        value: "true"
+      - key: LANGCHAIN_PROJECT
+        value: "finance-ai-assistant"
+      - key: CHROMA_PERSIST_DIR
+        value: "./data/vector_store"
+      - key: UPLOAD_DIR
+        value: "./data/uploads"
+
+  - type: web
+    name: finance-ai-frontend
+    runtime: static
+    rootDir: frontend
+    buildCommand: "npm install && npm run build"
+    staticPublishPath: ./build
