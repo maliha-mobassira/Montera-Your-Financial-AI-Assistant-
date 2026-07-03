@@ -57,8 +57,7 @@ Montera was built to solve critical bookkeeping bottleneck issues for three core
 4.  **Review Anomaly Alerts:** Inspect the AI output. The RAG engine flags line item anomalies (like a high setup charge relative to a recurring retainer).
 
 <p align="center">
-  <a href="[Insert Business Video Drive Link]"><img src="./Buisness%20workspace.png" width="45%" alt="Empty Business Dashboard" /></a>
-  <a href="[Insert Business Video Drive Link]"><img src="./ai_chat_audit.png" width="45%" alt="AI Chat Auditing" /></a>
+  <a href="[Insert Business Video Drive Link]"><img src="./Buisness%20workspace.png" width="90%" alt="Empty Business Dashboard" /></a>
 </p>
 
 5.  **Log Ledger:** Verify the extracted total, select an IRS tax classification from the Schedule C dropdown, and click **Save as Transaction**.
