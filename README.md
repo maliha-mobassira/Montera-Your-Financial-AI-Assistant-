@@ -4,12 +4,6 @@ Montera is a high-performance, full-stack financial platform designed to bridge 
 
 ---
 
-## 🎥 Walkthrough Video Demonstrations
-*   📺 **[Business AI Auditing & RAG Ingestion Demo Video (Drive Link)]**
-*   📺 **[Personal Ledger & Goals Management Demo Video (Drive Link)]**
-
----
-
 ## 🎯 Target Audience & Problems Solved
 
 Montera was built to solve critical bookkeeping bottleneck issues for three core user groups:
@@ -50,6 +44,7 @@ Montera was built to solve critical bookkeeping bottleneck issues for three core
 ## 👥 How to Use Montera
 
 ### 🏢 1. The Business AI Auditing Workspace
+> 📺 **[Watch the Business AI Auditing & RAG Ingestion Demo Video (Drive Link)]**
 
 <p align="center">
   <img src="./Log%20in%20page%20.png" width="45%" alt="Login Portal" />
@@ -77,6 +72,7 @@ Montera was built to solve critical bookkeeping bottleneck issues for three core
 ---
 
 ### 💳 2. The Personal Tracker Workspace
+> 📺 **[Watch the Personal Ledger & Goals Management Demo Video (Drive Link)]**
 
 <p align="center">
   <img src="./personal_categories.png" width="45%" alt="Personal Categories" />
