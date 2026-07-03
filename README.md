@@ -1,115 +1,127 @@
 # 💼 Montera – AI Financial Auditor + Personal Tracker
 
-Montera is a full-stack financial platform designed to bridge unstructured documents—like receipts, invoices, and bank statements—into structured, IRS-compliant accounting ledgers. 
+Montera is a high-performance, full-stack financial platform designed to bridge unstructured statement files (PDFs, invoice scans, receipt images) into structured, IRS-compliant ledgers. Montera features a dual-persona design tailored for different financial workflows: the **Business AI Auditing Workspace** for freelancers and analysts, and the **Personal Finance Tracker** for individual household budgeting.
 
-It features a dual-persona design: a **Business / AI Auditing Workspace** for freelancers and bookkeepers, and a **Personal Tracker** for individual household budget management.
+---
+
+## 🎥 Walkthrough Video Demonstrations
+*   📺 **[Business AI Auditing & RAG Ingestion Demo Video (Drive Link)]**
+*   📺 **[Personal Ledger & Goals Management Demo Video (Drive Link)]**
+
+---
+
+## 🎯 Target Audience & Problems Solved
+
+Montera was built to solve critical bookkeeping bottleneck issues for three core user groups:
+
+*   **Freelancers & Solopreneurs:** Manually sorting personal bank transactions from business expenses is tedious. Montera automatically separates ledgers and maps business outflows to IRS Schedule C tax classifications.
+*   **Small Business Owners:** Real-time visibility into cash flow is crucial. Montera tracks margins, monitors monthly outflow trends, and calculates cash runway forecasts based on active burn rates.
+*   **Bookkeepers & Financial Auditors:** Manual invoice auditing is prone to overlooking hidden fees. Montera's AI auditor scans line items against contract policies to flag pricing discrepancies and unusual one-time fees.
+
+---
+
+## 💻 Tech Stack & Architectural Decisions
+
+| Layer | Technology | Engineering Rationale |
+| :--- | :--- | :--- |
+| **Frontend** | React 18, TypeScript, Vite, Recharts, Lucide Icons | Selected Vite for sub-second hot-reloads, TypeScript for compile-time safety, and Recharts to render performant cash-flow curves. |
+| **Backend** | FastAPI, Uvicorn, LangChain, Groq SDK | FastAPI achieves high concurrency using Python's `async/await` syntax. Groq is used to access Llama models at extremely low inference latency (100+ tokens/sec). |
+| **Database** | SQLite + SQLAlchemy | Lightweight SQL database suitable for local deployment, providing relational transaction storage. |
+| **Vector Database** | Local Memory TF-IDF Database | Custom vector storage writing to `documents.json` that filters document passages by user ID for rapid local RAG context retrieval. |
+| **Orchestration** | Docker & Docker Compose | Containerizes the React frontend and FastAPI backend into a single-command deployment. |
+
+---
+
+## ⚙️ Engineering Challenges & Production Solutions
+
+### 1. Multi-Tenant Data Isolation (Security)
+*   **The Problem:** Standard SQLite-backed MVPs often query data globally, leading to cross-user leaks in multi-account environments.
+*   **The Solution:** We implemented a composite session hash: `user_id = "${email}:${workspace}"` (e.g. `maliha@montera.ai:local`). All REST requests inject this key. SQLite queries and TF-IDF similarity vector matching are filtered strictly against this composite key, guaranteeing that a user switching workspaces starts with a completely clean slate (**Expenses: BDT 0.00**).
+
+### 2. Adaptive Document Ingestion Pipeline
+*   **The Problem:** Receipts are uploaded as digital PDFs, raw scans, or mobile photos. Standard text parsers crash on images, while OCR engines waste tokens on digital PDFs.
+*   **The Solution:** Built a smart mime-type routing pipeline:
+    *   **Digital PDFs:** Read natively using `pypdf` for fast text extraction.
+    *   **Scans/Photos (PNG/JPG/WEBP):** Sent to **Llama 3.2 Vision** on Groq for visual OCR.
+    *   The extracted text is then analyzed by a structured **Llama 3.3 70B** parsing chain to output structured JSON fields.
+
+---
+
+## 👥 How to Use Montera
+
+### 🏢 1. The Business AI Auditing Workspace
 
 <p align="center">
-  <img src="file:///C:/Users/mdj52/.gemini/antigravity-ide/brain/55265836-c3eb-4a72-828e-e9736f12ecdb/montera_logo_1783077890484.png" width="300" alt="Montera World Class Logo" />
+  <img src="./Log%20in%20page%20.png" width="45%" alt="Login Portal" />
+  <img src="./workspace%20.png" width="45%" alt="Workspace Selector" />
+</p>
+
+1.  **Flexible Login:** Navigate to `http://localhost:3000`. Log in with any email (e.g., `company@montera.ai`).
+2.  **Access Workspace:** Enter a workspace name (e.g., `local`), select **Business Persona**, and click **Access Workspace**.
+3.  **Audit Documents:** Go to the **Upload** page, drop an invoice scan, and click **Process & Audit**.
+4.  **Review Anomaly Alerts:** Inspect the AI output. The RAG engine flags line item anomalies (like a high setup charge relative to a recurring retainer).
+
+<p align="center">
+  <img src="./Buisness%20workspace.png" width="45%" alt="Empty Business Dashboard" />
+  <img src="./ai_chat_audit.png" width="45%" alt="AI Chat Auditing" />
+</p>
+
+5.  **Log Ledger:** Verify the extracted total, select an IRS tax classification from the Schedule C dropdown, and click **Save as Transaction**.
+6.  **Runway Graphing:** Navigate to the **Dashboard** to view updated net balance charts, general ledgers, and runway burn trends. Click **Enable Demo Sandbox Data** to preview the dashboard charts instantly.
+
+<p align="center">
+  <img src="./populated_dashboard.png" width="45%" alt="Populated Business Dashboard" />
+  <img src="./insights_charts.png" width="45%" alt="Insights Charts" />
 </p>
 
 ---
 
-## 📽️ Video Demonstrations
-*   📺 **[Watch the Business AI Auditing Demo (Drive Link)]**
-*   📺 **[Watch the Personal Finance Tracker Demo (Drive Link)]**
-
----
-
-## 🚀 How the System Works (Under the Hood)
-
-Below is the request lifecycle flowchart showing how an uploaded invoice translates into a cash-flow projection in real time:
+### 💳 2. The Personal Tracker Workspace
 
 <p align="center">
-  <img src="file:///C:/Users/mdj52/.gemini/antigravity-ide/brain/55265836-c3eb-4a72-828e-e9736f12ecdb/montera_architecture_flow_1783080137368.png" width="650" alt="Montera Request Lifecycle Flowchart" />
+  <img src="./personal_categories.png" width="45%" alt="Personal Categories" />
+  <img src="./personal_budgets.png" width="45%" alt="Personal Budgets" />
 </p>
 
-1.  **Ingest & Detect:** You upload a file (PDF or image). The system automatically routes digital PDFs to `pypdf` or triggers **Llama 3.2 Vision OCR** on Groq for scanned photos.
-2.  **AI Audit:** The extracted text is run through a **Llama 3.3 70B** parser. The AI extracts metadata (Vendor, Date, Amount) and highlights one-time pricing anomalies.
-3.  **Secure Partitioning:** Both the relational SQLite database and the TF-IDF vector database isolate your records using a composite partition key: `user_id = "${email}:${workspace}"`.
-4.  **Instant Charts:** Saving the transaction triggers a re-fetch, drawing animated Cash Flow trend lines on the dashboard.
+1.  **Configure Categories:** Go to **Categories** and add items with custom emojis (e.g., 🏠 `Rent & Housing`, 📱 `Mobile & Internet`).
+2.  **Add Ledger Logs:** Log manual transactions in the **Transactions** panel to track your personal cash flow.
+
+<p align="center">
+  <img src="./personal_goals.png" width="45%" alt="Savings Goals" />
+  <img src="./personal_reports.png" width="45%" alt="Personal Reports" />
+</p>
+
+3.  **Allocate Budgets:** Go to **Budgets** to specify monthly limits and monitor progress metrics.
+4.  **Savings Targets:** Go to **Goals** to input savings goals (e.g. `New Laptop for Coding`, Target: `120000`, Already Saved: `25000`) to visualize your progress.
+5.  **Insights:** Go to **Insights** to view spending trend graphs and category breakdowns.
+
+<p align="center">
+  <img src="./personal_ledger.png" width="45%" alt="Personal Transactions Ledger" />
+</p>
 
 ---
 
-## 👥 How to Use Montera (Step-by-Step User Guide)
-
-### 🏢 1. The Business Workspace (For Freelancers & Analysts)
-
-#### Step A: Portal Sign-In & Workspace Isolation
-1.  Navigate to `http://localhost:3000`. You will be greeted by the **SaaS Demo Login Portal**.
-2.  Enter any valid email address (e.g. `yourname@company.com`) and password (minimum 4 characters).
-3.  Choose a workspace name (e.g. `acme_ventures`) and select the **Business Persona**.
-4.  Click **Access Workspace**. Your workspace database is now isolated; logging in with a different email will start completely empty (Expenses: BDT 0.00).
-
-#### Step B: Ingestion & Smart IRS Tax Allocation
-1.  Click **Upload** in the sidebar. 
-2.  Drag and drop an invoice or receipt (e.g., Google Cloud bill, Uber receipt) into the dotted neon scan box.
-3.  Click **Process & Audit**. The system runs OCR and returns a structured markdown analysis table.
-4.  Verify the extracted fields below the answer window:
-    *   **Vendor Name, Total Amount, and Billing Date** are pre-populated but fully editable.
-    *   The **IRS Schedule C tax dropdown** automatically pre-selects correct tax categories (e.g., *Office/Software* for cloud services, *Utilities* for server hosting).
-5.  Click **Save as Transaction** to write the record to your SQLite ledger database.
-
-#### Step C: Redesigned 2026 Dashboard
-1.  Click **Dashboard** in the sidebar.
-2.  Observe the premium glassmorphic KPI cards with outer shadow glows.
-3.  Click **Enable Demo Sandbox Data** to instantly draw Recharts lines and Cash Flow bar graphs.
-4.  Scroll to the **Quick Ledger Entry** form to manually log transactions in two clicks.
-
----
-
-### 💳 2. The Personal Workspace (For Personal Tracking)
-
-#### Step A: Setup Categories
-1.  Navigate to **Categories** in the sidebar.
-2.  Add items with custom emojis (e.g. 🍲 `Groceries & Dining`, 📱 `Mobile & Internet`, 🏠 `Rent & Housing`, 📚 `Education & Books`).
-
-#### Step B: Log Expenses & Income
-1.  Navigate to the **Transactions** view.
-2.  Add logs (e.g. BDT 35,000.00 Freelance Income, BDT 1,200.00 Internet Expense, BDT 12,000.00 Rent Expense).
-3.  View the list of transactions in your history ledger at the bottom.
-
-#### Step C: Allocate Budgets & Goals
-1.  Go to the **Budgets** view and set monthly allowances for the active month (e.g. BDT 2,000.00 for Mobile & Internet). The dashboard will display a percentage warning bar showing budget consumption.
-2.  Go to the **Goals** view and set a savings target (e.g. `New Laptop for Coding`, Target: `120000`, Already Saved: `25000`). It will automatically calculate your progress percentage (20.8%).
-
----
-
-## 🔒 Multi-Tenant Data Security
-*   **Isolated Database RAG:** Document vector chunks in `documents.json` are tagged with your `user_id`. When User A runs an AI chat, they can only search files belonging to their active login email.
-*   **Isolated Transactions:** Ledger data is queried using `user_id = "${email}:${workspace}"` filters, preventing cross-user workspace leakage.
-
----
-
-## 🛠️ Technology Stack
-*   **Frontend SPA:** React 18, TypeScript, Vite, Recharts, Lucide-React, custom dark-mode CSS.
-*   **Backend Routing:** FastAPI, Uvicorn, LangChain, Groq API (Llama 3.2/3.3 models).
-*   **Database Layers:** SQLite (`montera.db`) & local TF-IDF vector database (`documents.json`).
-*   **Infrastructure:** Docker & Docker Compose.
-
----
-
-## 💻 Terminal Commands
+## 🚀 Quickstart Commands
 
 ### Option A — Run via Docker (Recommended)
-1.  Add your Groq API key to a `.env` file at the root:
+1.  Configure your API key in a `.env` file at the project root:
     ```env
     GROQ_API_KEY=gsk_your_actual_key_here
     ```
-2.  Start the containers:
+2.  Run the container orchestration:
     ```bash
     docker compose up --build
     ```
-3.  Access the web client at `http://localhost:3000`.
+3.  Open `http://localhost:3000` in your web browser.
 
 ### Option B — Run Locally
-*   **Backend Server Setup:**
+*   **Backend Server:**
     ```bash
     cd backend
     pip install -r requirements.txt
     python -m uvicorn main:app --reload --host 0.0.0.0 --port 8000
     ```
-*   **Frontend Client Setup:**
+*   **Frontend Client:**
     ```bash
     cd frontend
     npm install
