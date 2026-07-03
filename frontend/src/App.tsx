@@ -41,6 +41,7 @@ import {
   FileUp,
   LayoutDashboard,
   MessageSquare,
+  PlayCircle,
   Moon,
   PanelLeft,
   PiggyBank,
@@ -857,6 +858,16 @@ function AppShell() {
 
           <nav className="nav" style={{ marginTop: 12, borderTop: '1px solid var(--border)', paddingTop: 12 }}>
             <SideLink to="/settings" icon={<Cog className="navIcon" />} label="Settings" collapsed={settings.sidebarCollapsed} />
+            <ExternalSideLink
+              href={
+                activePersona === 'business'
+                  ? 'https://drive.google.com/drive/folders/1WheArwTlyaJFBIDA1vbYmpFrecy7jPuT?usp=sharing'
+                  : 'https://drive.google.com/file/d/1eQrTQhejoPNNLxq49JcrZkM5iXNZaTmQ/view?usp=sharing'
+              }
+              icon={<PlayCircle className="navIcon" style={{ color: 'var(--accent)' }} />}
+              label={`${activePersona === 'business' ? 'Business' : 'Personal'} Video`}
+              collapsed={settings.sidebarCollapsed}
+            />
           </nav>
         </div>
 
@@ -1040,6 +1051,32 @@ function SideLink({
       {icon}
       {!collapsed && <span style={{ fontWeight: 850 }}>{label}</span>}
     </NavLink>
+  );
+}
+
+function ExternalSideLink({
+  href,
+  icon,
+  label,
+  collapsed,
+}: {
+  href: string;
+  icon: ReactNode;
+  label: string;
+  collapsed: boolean;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="navItem"
+      title={collapsed ? label : undefined}
+      style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}
+    >
+      {icon}
+      {!collapsed && <span style={{ fontWeight: 850, color: 'var(--accent)' }}>{label}</span>}
+    </a>
   );
 }
 
