@@ -1,6 +1,7 @@
 services:
   - type: web
     name: finance-ai-backend
+    plan: free
     runtime: python
     rootDir: backend
     buildCommand: "pip install -r requirements.txt"
